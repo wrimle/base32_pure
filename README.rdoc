@@ -4,8 +4,8 @@ Encodes and decodes binary tokens to and from base32.
 
 == Description
 
-It uses the Crockford alphabet defined defined at http://www.crockford.com/wrmg/base32.html
-- which is probably not the most efficient.
+It uses the Crockford alphabet defined defined at http://www.crockford.com/wrmg/base32.html - 
+which is probably not the most efficient.
 
 It is quite tolerant to user mistakes.
 
