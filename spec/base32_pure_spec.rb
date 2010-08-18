@@ -52,6 +52,7 @@ describe "Base32" do
 
     it "allows hypenation" do
       string = "21ab0devsdagjølp58"
+      string.force_encoding("binary") if string.respond_to?(:force_encoding)
       encoded = Base32::Crockford.hypenate(Base32::Crockford.encode(string))
       decoded = Base32::Crockford.decode(encoded)
 
