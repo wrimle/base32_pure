@@ -9,10 +9,10 @@ It uses the Crockford alphabet defined defined at http://www.crockford.com/wrmg/
 
 It is quite tolerant to user mistakes.
 
- * It's case insensitive
- * I,l and 1 maps to the same value
- * 0 and O maps to the same value
- * U is excluded to reduce the likelyhood of accidental obscenity
+* It's case insensitive
+* I, l and 1 maps to the same value
+* 0 and O maps to the same value
+* U is excluded to reduce the likelyhood of accidental obscenity
 
 == Usage
 
@@ -29,7 +29,7 @@ It is quite tolerant to user mistakes.
 The optional check value is not implemented.
 
 == Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
