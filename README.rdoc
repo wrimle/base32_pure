@@ -1,6 +1,32 @@
 = base32_pure
 
-Description goes here.
+Encodes and decodes binary tokens to and from base32.
+
+== Description
+
+It uses the Crockford alphabet defined defined at http://www.crockford.com/wrmg/base32.html
+- which is probably not the most efficient.
+
+It is quite tolerant to user mistakes.
+
+ * It's case insensitive
+ * I,l and 1 maps to the same value
+ * 0 and O maps to the same value
+ * U is excluded to reduce the likelyhood of accidental obscenity
+
+== Usage
+
+ require 'base32_pure'
+
+ encoded = Base32::Crockford.encode("Some token")
+ Base32::Crockford.decode(encoded)
+
+ hypenated = Base32::Crockford.hypenate(encoded)
+ Base32::Crockford.decode(hypenated)
+
+== Features/problems
+
+The optional check value is not implemented.
 
 == Note on Patches/Pull Requests
  
