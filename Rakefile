@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "base32_pure"
     gem.summary = %Q{Encode and decode tokens to and from base32.}
-    gem.description = %Q{Pure ruby libary. Using the crockford alphabeth}
+    gem.description = %Q{Pure ruby libary. Using the crockford alphabet.}
     gem.email = "rune@epubify.com"
     gem.homepage = "http://github.com/wrimle/base32_pure"
     gem.authors = ["Rune Myrland"]
