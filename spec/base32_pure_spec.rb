@@ -6,11 +6,19 @@ describe "Base32" do
   include Base32
 
   context "Crockford" do
+
     it "encodes a string to base 32" do
       encoded = Base32::Crockford.encode("A")
       encoded.should == "21"
+    end
 
-      puts Base32::Crockford.hypenate(Base32::Crockford.encode("a test"))
+    it "encodes a fixnum to base 32" do
+      encoded = Base32::Crockford.encode(12)
+      encoded.should == "C9J"
+    end
+
+    it "encodes a fixnum the same as the equivalent string" do
+      Base32::Crockford.encode(12).should == Base32::Crockford.encode("12")
     end
 
     it "decodes a string from base 32" do

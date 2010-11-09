@@ -39,6 +39,7 @@ module Base32
     }
 
     def self.encode v
+      v = v.to_s if v.respond_to?(:to_s)
       normalized = v.reverse
       n = 0
       bits = 0
