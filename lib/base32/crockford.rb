@@ -57,10 +57,10 @@ module Base32
 
 
     def self.encode v
-      if v.integer?
+      if v.respond_to?(:integer?) && v.integer?
         normalized = NormalizedInteger.new(v)
       else
-        normalize = v.reverse
+        normalized = v.reverse
       end
  
       n = 0
