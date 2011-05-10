@@ -1,6 +1,6 @@
 = base32_pure
 
-Encodes and decodes binary tokens to and from base32.
+Encodes and decodes binary string or integer tokens to and from base32.
 
 == Description
 
@@ -21,6 +21,18 @@ which is probably not the most efficient, but it is tolerant to user mistakes.
 
  hypenated = Base32::Crockford.hypenate(encoded)
  Base32::Crockford.decode(hypenated)
+
+ # Fixnum and Bignum should work as well
+ encoded = Base32::Crockford.encode(12345)
+ Base32::Crockford.decode(encoded, :integer)
+
+
+ # Typical use case
+ require 'uuidtools'
+
+ digest = UUIDTools::UUID.random_create.raw
+ base32_token = Base32::Crockford.encode(digest)
+ 
 
 == Features/problems
 
