@@ -1,5 +1,22 @@
+# Extend fixnum with an each_byte method
 
 module Base32
+
+  class NormalizedInteger
+    def initialize v
+      @value = v
+    end
+
+
+    def each_byte &blk
+      v = @value
+      while v > 0
+        yield (v & 255)
+        v >>= 8
+      end
+    end
+  end
+
 
   class Crockford
     ENCODE = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
@@ -38,9 +55,14 @@ module Base32
       'Z' => 31,
     }
 
+
     def self.encode v
-      v = v.to_s if v.respond_to?(:to_s)
-      normalized = v.reverse
+      if v.integer?
+        normalized = NormalizedInteger.new(v)
+      else
+        normalize = v.reverse
+      end
+ 
       n = 0
       bits = 0
       res = ""
@@ -64,12 +86,13 @@ module Base32
       v.reverse.gsub(/(\w\w\w\w\w)/, "\\1-").gsub(/-$/, "").downcase.reverse
     end
 
-    def self.decode v
+    def self.decode v, to = :binary_string
       normalized = v.upcase.tr("OILU", "011").tr("-", "").reverse
 
       n = 0
       bits = 0
       res = ""
+      res.force_encoding("binary") if res.respond_to?(:force_encoding)
       normalized.each_byte do |b|
         n += (DECODE[ b.chr ] << bits)
         bits += 5
@@ -82,8 +105,19 @@ module Base32
       end
       res << n if n != 0
       res << 0 if res.empty?
+      res = res.reverse
 
-      res.reverse
+      case to
+      when :integer
+        v = 0
+        res.each_byte do |byte|
+          v <<= 8
+          v |= byte
+        end
+        v
+      else
+        res
+      end
     end
   end
 end
