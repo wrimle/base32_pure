@@ -11,7 +11,7 @@ module Base32
     def each_byte &blk
       v = @value
       while v > 0
-        yield (v & 255)
+        yield v & 255
         v >>= 8
       end
     end
