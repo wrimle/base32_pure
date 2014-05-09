@@ -77,7 +77,7 @@ module Base32
         end
       end
       res << ENCODE[ n & 31 ] if n != 0
-      res << 0 if res.empty?
+      res << '0' if res.empty?
 
       res.reverse
     end
